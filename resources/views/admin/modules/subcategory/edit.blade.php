@@ -1,10 +1,10 @@
 @extends('admin.master')
-@section('title','Add-subcategory')
+@section('title','Edit-subcategory')
 @section('content')
     <div class="container">
         <div class="card my-4">
             <div class="card-header d-flex align-items-center justify-content-between">
-                <h5 class="mb-0">Add Subcategory</h5>
+                <h5 class="mb-0">Edit Subcategory</h5>
                 <a href="{{route('all-subcategory')}}" class="btn btn-primary">All Subcategory</a>
             </div>
             <div class="card-body">
@@ -17,7 +17,7 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route('store-subcategory') }}" method="POST">
+                <form action="{{ route('update-subcategory',$subcategory->id) }}" method="POST">
                     @csrf
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-default-company">Subcategory Name</label>
@@ -27,23 +27,12 @@
                                 name="subcategory_name"
                                 class="form-control"
                                 id="basic-default-company"
-                                placeholder="Category Name" />
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label" for="basic-default-company">Category Name</label>
-                        <div class="col-sm-10">
-                            <select class="form-select" name="category_id" id="exampleFormControlSelect1" aria-label="Default select example">
-                                <option selected>Select Category</option>
-                                @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                                @endforeach
-                            </select>
+                                value="{{ $subcategory->subcategory_name }}" />
                         </div>
                     </div>
                     <div class="row justify-content-end">
                         <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary">New Category</button>
+                            <button type="submit" class="btn btn-primary">Update Category</button>
                         </div>
                     </div>
                 </form>
@@ -51,3 +40,4 @@
         </div>
     </div>
 @endsection
+

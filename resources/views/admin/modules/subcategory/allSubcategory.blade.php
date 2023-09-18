@@ -25,16 +25,18 @@
                         </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
+                        @foreach($subcategories as $subcategory)
                         <tr>
-                            <td>1</td>
-                            <td>Albert Cook</td>
-                            <td>1</td>
-                            <td>Albert Cook</td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $subcategory->subcategory_name }}</td>
+                            <td>{{ $subcategory->category_name }}</td>
+                            <td>{{ $subcategory->product_count }}</td>
                             <td>
-                                <a href="" class="btn btn-info btn-sm"><i class="bx bx-edit-alt me-1"></i></a>
-                                <a href="" class="btn btn-danger btn-sm"><i class="bx bx-trash me-1"></i></a>
+                                <a href="{{ route('edit-subcategory',$subcategory->id) }}" class="btn btn-info btn-sm"><i class="bx bx-edit-alt me-1"></i></a>
+                                <a href="{{ route('delete-subcategory',$subcategory->id) }}" class="btn btn-danger btn-sm"><i class="bx bx-trash me-1"></i></a>
                             </td>
                         </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
