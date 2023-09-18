@@ -2,6 +2,11 @@
 @section('title','All-Category')
 @section('content')
     <div class="container">
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+        @endif
         <div class="card my-4">
             <div class="card-header d-flex align-items-center justify-content-between">
                 <h5 class="mb-0">Manage Category</h5>
@@ -14,22 +19,24 @@
                         <tr>
                             <th>Sl</th>
                             <th>Category Name</th>
-                            <th>Subcategory</th>
                             <th>slug</th>
+                            <th>Subcategory</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
+                        @foreach($categories as $category)
                         <tr>
-                            <td>1</td>
-                            <td>Albert Cook</td>
-                            <td>1</td>
-                            <td>Albert Cook</td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $category->category_name }}</td>
+                            <td>{{ $category->slug }}</td>
+                            <td>{{ $category->subcategory_count }}</td>
                             <td>
-                                <a href="" class="btn btn-info btn-sm"><i class="bx bx-edit-alt me-1"></i></a>
-                                <a href="" class="btn btn-danger btn-sm"><i class="bx bx-trash me-1"></i></a>
+                                <a href="{{ route('edit-category',$category->id) }}" class="btn btn-info btn-sm"><i class="bx bx-edit-alt me-1"></i></a>
+                                <a href="{{ route('delete-category',$category->id) }}" class="btn btn-danger btn-sm"><i class="bx bx-trash me-1"></i></a>
                             </td>
                         </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

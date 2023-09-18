@@ -8,6 +8,15 @@
                 <a href="{{route('all-product')}}" class="btn btn-primary">All Product</a>
             </div>
             <div class="card-body">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form action="" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
@@ -58,7 +67,7 @@
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-6">Category Name</label>
                         <div class="col-sm-10">
-                            <select class="form-select" name="category_id" id="basic-6" aria-label="Default select example">
+                            <select class="form-select" name="product_category_id" id="basic-6" aria-label="Default select example">
                                 <option selected>Open this select menu</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -69,7 +78,7 @@
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-7">Subcategory Name</label>
                         <div class="col-sm-10">
-                            <select class="form-select" name="subcategory_id" id="basic-7" aria-label="Default select example">
+                            <select class="form-select" name="product_subcategory_id" id="basic-7" aria-label="Default select example">
                                 <option selected>Open this select menu</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
