@@ -1,10 +1,10 @@
 @extends('admin.master')
-@section('title','Add-Product')
+@section('title','Edit-Product')
 @section('content')
     <div class="container">
         <div class="card my-4">
             <div class="card-header d-flex align-items-center justify-content-between">
-                <h5 class="mb-0">Product Add</h5>
+                <h5 class="mb-0">Edit Product</h5>
                 <a href="{{route('all-product')}}" class="btn btn-primary">All Product</a>
             </div>
             <div class="card-body">
@@ -65,28 +65,6 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label" for="basic-6">Category Name</label>
-                        <div class="col-sm-10">
-                            <select class="form-select" name="product_category_id" id="basic-6" aria-label="Default select example">
-                                <option selected>Select Category</option>
-                                @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label" for="basic-7">Subcategory Name</label>
-                        <div class="col-sm-10">
-                            <select class="form-select" name="product_subcategory_id" id="basic-7" aria-label="Default select example">
-                                <option selected>Select Subcategory</option>
-                                @foreach($subcategories as $subcategory)
-                                <option value="{{ $subcategory->id }}">{{ $subcategory->subcategory_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-8">Product Image</label>
                         <div class="col-sm-10">
                             <input
@@ -98,7 +76,7 @@
                     </div>
                     <div class="row justify-content-end">
                         <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary">New Product</button>
+                            <button type="submit" class="btn btn-primary">Update Product</button>
                         </div>
                     </div>
                 </form>
@@ -106,3 +84,4 @@
         </div>
     </div>
 @endsection
+

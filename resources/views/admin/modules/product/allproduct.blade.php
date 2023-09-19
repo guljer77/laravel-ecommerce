@@ -21,21 +21,30 @@
                             <th>Product Name</th>
                             <th>Price</th>
                             <th>Image</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
+                        @foreach($products as $product)
                         <tr>
-                            <td>1</td>
-                            <td>Albert Cook</td>
-                            <td>100</td>
-                            <td>Albert Cook</td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $product->product_name }}</td>
+                            <td>{{ $product->price }}</td>
+                            <td><img src="{{ asset($product->product_image) }}" alt="" width="80" height="60"></td>
+                            <td>{{ $product->status == 1 ? 'active':'inactive' }}</td>
                             <td>
+                                @if($product->status == 1)
+                                    <a href="" class="btn btn-info btn-sm"><i class="bx bxs-arrow-to-top me-1"></i></a>
+                                @else
+                                    <a href="" class="btn btn-warning btn-sm"><i class="bx bxs-arrow-to-bottom me-1"></i></a>
+                                @endif
                                 <a href="" class="btn btn-info btn-sm"><i class="bx bx-book-open me-1"></i></a>
-                                <a href="" class="btn btn-info btn-sm"><i class="bx bx-edit-alt me-1"></i></a>
+                                <a href="{{ route('edit-product',$product->id) }}" class="btn btn-info btn-sm"><i class="bx bx-edit-alt me-1"></i></a>
                                 <a href="" class="btn btn-danger btn-sm"><i class="bx bx-trash me-1"></i></a>
                             </td>
                         </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
