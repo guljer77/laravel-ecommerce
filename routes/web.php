@@ -29,9 +29,16 @@ Route::controller(HomeController::class)->group(function (){
     Route::get('/e-mart/details/{id}/{slug}','details')->name('details');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'role:user'])->name('dashboard');
+Route::middleware(['auth','role:user'])->group(function (){
+    Route::controller(HomeController::class)->group(function (){
+        Route::get('/e-mart/add-to-cart','cart')->name('addtocart');
+        Route::get('/e-mart/profile','profile')->name('userprofile');
+        Route::get('/profile/pending-order','pending')->name('pending-order');
+        Route::get('/profile/history','history')->name('history');
+        Route::post('/profile/add-to-product-cart/{id}','product')->name('addtoproductcart');
+    });
+});
+
 
 Route::middleware(['auth', 'role:admin'])->group(function (){
     Route::controller(DashboardController::class)->group(function (){

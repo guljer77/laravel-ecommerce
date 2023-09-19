@@ -102,7 +102,7 @@
         <div class="row px-xl-5">
             @foreach($products as $product)
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <div class="product-item bg-light mb-4" style="height: 450px">
+                <div class="product-item bg-light mb-4" style="height: 520px">
                     <div class="product-img position-relative overflow-hidden">
                         <img class="img-fluid w-100" src="{{ asset($product->product_image) }}" alt="" style="height: 280px">
                         <div class="product-action">
@@ -125,6 +125,15 @@
                             <small class="fa fa-star text-primary mr-1"></small>
                             <small>(99)</small>
                         </div>
+                    </div>
+                    <div class="text-center">
+                        <form action="{{ route('addtoproductcart',$product->id) }}" method="POST">
+                            @csrf
+                            <input type="hidden" value="{{ $product->id }}" name="product_id">
+                            <input type="hidden" value="{{ $product->price }}" name="price">
+                            <input type="hidden" value="1" name="quantity">
+                            <button type="submit" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Buy Now</button>
+                        </form>
                     </div>
                 </div>
             </div>

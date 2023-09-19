@@ -27,31 +27,6 @@
                     </div>
                     <h5>Price: {{ $product->price }}<span>৳</span></h5>
                     <p class="mb-4">{{ $product->product_short_des }}</p>
-                    <div class="d-flex mb-3">
-                        <strong class="text-dark mr-3">Sizes:</strong>
-                        <form>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="size-1" name="size">
-                                <label class="custom-control-label" for="size-1">XS</label>
-                            </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="size-2" name="size">
-                                <label class="custom-control-label" for="size-2">S</label>
-                            </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="size-3" name="size">
-                                <label class="custom-control-label" for="size-3">M</label>
-                            </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="size-4" name="size">
-                                <label class="custom-control-label" for="size-4">L</label>
-                            </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="size-5" name="size">
-                                <label class="custom-control-label" for="size-5">XL</label>
-                            </div>
-                        </form>
-                    </div>
                     <div class="d-flex mb-4">
                         <strong class="text-dark mr-3">Colors:</strong>
                         <form>
@@ -78,21 +53,17 @@
                         </form>
                     </div>
                     <div class="d-flex align-items-center mb-4 pt-2">
-                        <div class="input-group quantity mr-3" style="width: 130px;">
-                            <div class="input-group-btn">
-                                <button class="btn btn-primary btn-minus">
-                                    <i class="fa fa-minus"></i>
-                                </button>
+                        <form action="{{ route('addtoproductcart',$product->id) }}" method="POST">
+                            @csrf
+                            <input type="hidden" value="{{ $product->id }}" name="product_id">
+                            <div class="form-group">
+                                <input type="hidden" value="{{ $product->price }}" name="price">
+                                <label for="">How Many Pics? </label>
+                                <input type="number" min="1" placeholder="1" name="quantity" class="form-control mb-3">
                             </div>
-                            <input type="text" class="form-control bg-secondary border-0 text-center" value="1">
-                            <div class="input-group-btn">
-                                <button class="btn btn-primary btn-plus">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
-                            Cart</button>
+                            <button type="submit" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
+                                Cart</button>
+                        </form>
                     </div>
                     <div class="d-flex pt-2">
                         <strong class="text-dark mr-2">Share on:</strong>
@@ -191,7 +162,7 @@
             <div class="col">
                 <div class="owl-carousel related-carousel">
                     @foreach($relateds as $product)
-                    <div class="product-item bg-light" style="height: 430px">
+                    <div class="product-item bg-light" style="height: 520px">
                         <div class="product-img position-relative overflow-hidden">
                             <img class="img-fluid w-100" src="{{ asset($product->product_image) }}" alt="">
                             <div class="product-action">
@@ -214,6 +185,15 @@
                                 <small class="fa fa-star text-primary mr-1"></small>
                                 <small>(99)</small>
                             </div>
+                        </div>
+                        <div class="text-center">
+                            <form action="{{ route('addtoproductcart',$product->id) }}" method="POST">
+                                @csrf
+                                <input type="hidden" value="{{ $product->id }}" name="product_id">
+                                <input type="hidden" value="{{ $product->price }}" name="price">
+                                <input type="hidden" value="1" name="quantity">
+                                <button type="submit" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Buy Now</button>
+                            </form>
                         </div>
                     </div>
                     @endforeach
