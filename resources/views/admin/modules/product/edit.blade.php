@@ -17,7 +17,7 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route('store-product') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('update-product',$product->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-1">Product Name</label>
@@ -27,7 +27,7 @@
                                 name="product_name"
                                 class="form-control"
                                 id="basic-1"
-                                placeholder="Product Name" />
+                                value="{{ $product->product_name }}" />
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -38,7 +38,7 @@
                                 name="price"
                                 class="form-control"
                                 id="basic-2"
-                                placeholder="$100" />
+                                value="{{ $product->price }}" />
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -49,29 +49,19 @@
                                 name="quantity"
                                 class="form-control"
                                 id="basic-3"
-                                placeholder="20" />
+                                value="{{ $product->quantity }}" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-4">Product S.Description</label>
                         <div class="col-sm-10">
-                            <textarea name="product_short_des" id="basic-4" cols="30" rows="5" class="form-control"></textarea>
+                            <textarea name="product_short_des" id="basic-4" cols="30" rows="5" class="form-control">{{ $product->product_short_des }}</textarea>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-5">Product L.Description</label>
                         <div class="col-sm-10">
-                            <textarea name="product_long_des" id="basic-5" cols="30" rows="5" class="form-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label" for="basic-8">Product Image</label>
-                        <div class="col-sm-10">
-                            <input
-                                type="file"
-                                name="product_image"
-                                class="form-control"
-                                id="basic-8" />
+                            <textarea name="product_long_des" id="editor" cols="30" rows="5" class="form-control">{{ $product->product_long_des }}</textarea>
                         </div>
                     </div>
                     <div class="row justify-content-end">

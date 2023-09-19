@@ -51,6 +51,11 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
         Route::get('/admin/add-product', 'add')->name('add-product');
         Route::post('/admin/store-product', 'store')->name('store-product');
         Route::get('/admin/edit-product/{id}', 'edit')->name('edit-product');
+        Route::post('/admin/update-product/{id}', 'update')->name('update-product');
+        Route::get('/admin/image-product/{id}', 'image')->name('image-product');
+        Route::post('/admin/update-image/{id}', 'new')->name('update-image');
+        Route::get('/admin/delete-product/{id}', 'delete')->name('delete-product');
+        Route::get('/admin/details-product/{id}', 'details')->name('details-product');
     });
 });
 

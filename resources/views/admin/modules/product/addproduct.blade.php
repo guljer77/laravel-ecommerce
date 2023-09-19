@@ -61,7 +61,7 @@
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-5">Product L.Description</label>
                         <div class="col-sm-10">
-                            <textarea name="product_long_des" id="basic-5" cols="30" rows="5" class="form-control"></textarea>
+                            <textarea name="product_long_des" id="editor" cols="30" rows="5" class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="row mb-3">
