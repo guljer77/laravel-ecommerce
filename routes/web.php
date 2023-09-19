@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\SubcategoryController;
 use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\home\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,14 @@ use App\Http\Controllers\admin\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::controller(HomeController::class)->group(function (){
+    Route::get('/','index')->name('e-mart');
+    Route::get('/e-mart/category/{id}/{slug}','category')->name('category');
+    Route::get('/e-mart/details/{id}/{slug}','details')->name('details');
 });
 
 Route::get('/dashboard', function () {
