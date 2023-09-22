@@ -36,6 +36,7 @@ Route::middleware(['auth','role:user'])->group(function (){
         Route::get('/profile/pending-order','pending')->name('pending-order');
         Route::get('/profile/history','history')->name('history');
         Route::post('/profile/add-to-product-cart/{id}','product')->name('addtoproductcart');
+        Route::get('/profile/delete-item/{id}','delete')->name('delete-item');
     });
 });
 

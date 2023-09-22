@@ -134,6 +134,7 @@
                     <div class="navbar-nav mr-auto py-0">
                         <a href="{{ route('e-mart') }}" class="nav-item nav-link active">Home</a>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="{{ route('addtocart') }}" class="nav-item nav-link">Check Out</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                         <a href="" class="btn px-0">

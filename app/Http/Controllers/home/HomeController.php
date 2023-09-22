@@ -53,4 +53,8 @@ class HomeController extends Controller
         ]);
         return redirect('/e-mart/add-to-cart')->with('message','Order item Add to cart Successfully');
     }
+    public function delete($id){
+        Cart::find($id)->delete();
+        return redirect('/e-mart/add-to-cart')->with('message','Order item Delete to cart Successfully');
+    }
 }
